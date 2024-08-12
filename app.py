@@ -1,18 +1,20 @@
 import streamlit as st
 import pandas as pd
-import joblib
+#import joblib
 
 # Load the trained model
-model = joblib.load('bank_churn_model_compressed_xz_3.joblib')
+#model = joblib.load('bank_churn_model.pkl')
+
+import pickle
+
+# Load the model from a file
+with open('bankchurn_model.pkl', 'rb') as file:
+    model = pickle.load(file)
 
 # Title of the app
 st.title("Bank Customer Churn Prediction")
 
-try:
-    # Check if joblib is correctly imported
-    st.write("Joblib version:", joblib.__version__)
-except ImportError:
-    st.write("Failed to import joblib.")
+
 
 
 # Create input fields for user to enter data
